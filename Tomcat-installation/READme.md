@@ -55,21 +55,16 @@ sudo su - ec2-user
 configure tomcat server:
  1.  Enable external tomcat mgt access
   vi /opt/tomcat9/webapps/manager/META-INF/context.xml
-
-
  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
    allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
-
 <!--
  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
     allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
 --> 
-
-
 2. create tomcat users with access roles  :
 vi /opt/tomcat9/conf/tomcat-users.xml  =# to add user
 vi /opt/tomcat9/conf/tomcat-users.xml
 
 <user username="landmark" password="admin123" roles="manager-gui,admin-gui,manager-script"/>
 <user username="simon" password="admin123" roles="admin-gui"/> 
-
+----------------------------------------------------------------------
