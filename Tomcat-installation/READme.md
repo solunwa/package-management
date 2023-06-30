@@ -30,10 +30,10 @@ sudo yum install wget unzip -y
 sudo yum -y install wget
 export VER="9.0.64"
 sudo wget https://archive.apache.org/dist/tomcat/tomcat-9/v${VER}/bin/apache-tomcat-${VER}.tar.gz
-sudo unzip apache-tomcat-9.0.75.zip
-sudo rm -rf apache-tomcat-9.0.75.zip
+sudo tar xvf apache-tomcat-${VER}.tar.gz 
+sudo rm -rf apache-tomcat-9.0.64.tar.gz
 ### rename tomcat for good naming convention
-sudo mv apache-tomcat-9.0.75 tomcat9  
+sudo mv apache-tomcat-9.0.64 tomcat9  
 ### assign executable permissions to the tomcat home directory
 sudo chmod 777 -R /opt/tomcat9
 sudo chown ec2-user -R /opt/tomcat9
@@ -41,9 +41,12 @@ sudo chown ec2-user -R /opt/tomcat9
 sh /opt/tomcat9/bin/startup.sh
 # create a soft link to start and stop tomcat
 # This will enable us to manage tomcat as a service
+# sysmbolic link creation did not work below we may have to use the direct absolute path to perform service
 sudo ln -s /opt/tomcat9/bin/startup.sh /usr/bin/starttomcat
+sudo sh /opt/tomcat9/bin/startup.sh  # worked!!!
+# sysmbolic link creation did not work below we may have to use the direct absolute path to perform service
 sudo ln -s /opt/tomcat9/bin/shutdown.sh /usr/bin/stoptomcat
-starttomcat
+sudo sh /opt/tomcat9/bin/shutdown.sh  # worked!!!
 sudo su - ec2-user
 ```
 
