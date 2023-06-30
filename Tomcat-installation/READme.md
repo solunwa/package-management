@@ -42,10 +42,10 @@ sh /opt/tomcat9/bin/startup.sh
 # create a soft link to start and stop tomcat
 # This will enable us to manage tomcat as a service
 # sysmbolic link creation did not work below we may have to use the direct absolute path to perform service
-sudo ln -s /opt/tomcat9/bin/startup.sh /usr/bin/starttomcat
+sudo ln -s /opt/tomcat9/bin/startup.sh /usr/bin/starttomcat  # did not work
 sudo sh /opt/tomcat9/bin/startup.sh  # worked!!!
 # sysmbolic link creation did not work below we may have to use the direct absolute path to perform service
-sudo ln -s /opt/tomcat9/bin/shutdown.sh /usr/bin/stoptomcat
+sudo ln -s /opt/tomcat9/bin/shutdown.sh /usr/bin/stoptomcat  # did not work
 sudo sh /opt/tomcat9/bin/shutdown.sh  # worked!!!
 sudo su - ec2-user
 ```
